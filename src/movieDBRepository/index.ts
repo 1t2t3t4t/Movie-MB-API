@@ -1,0 +1,1 @@
+import TrendingRepository from '../movieDBRepository/TrendingRepository';
