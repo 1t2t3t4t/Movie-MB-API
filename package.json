@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node src",
+    "start": "npm run build && node build",
     "test": "ENV=test mocha --retries 3 --timeout 10000 --exit ./test/**/*.test.{js,ts}",
-    "build": "tsc"
+    "build": "rm -rf build && tsc"
   },
   "keywords": [],
   "author": "",
