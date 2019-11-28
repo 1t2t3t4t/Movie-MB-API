@@ -345,8 +345,12 @@
         "version": "4c2f243de46aad23c1f3f03cf4e934dabb5e1e5c683e07dde11f2e0d48e225ff",
         "signature": "7633220f0309ec496e63bac8eed6c032fe653e779f10d599da4e3fcaebfe1312"
       },
+      "./src/v1/home/index.ts": {
+        "version": "7c181c499e0d5f3874a6ff22023ce43858cd286e2a37fcdb510016720935c914",
+        "signature": "c0e8e692c882f056bc9023080b0bb9c2720ac5953eeae9540c936f0d1c46f8fb"
+      },
       "./src/index.ts": {
-        "version": "4fa1f0dad2dd91b2d75e36506071fdcbb51e55d09d257e83a60a7da9202d5294",
+        "version": "80eb4e1f858581941f5aa2e7ab0a09dc4645536fc0ba38462b063bfdebe49383",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
       },
       "./src/framework/annotation-restapi/test-sub-of-sub-endpoint.ts": {
@@ -364,10 +368,6 @@
       "./src/framework/annotation-restapi/test-endpoint.ts": {
         "version": "e06242f64f8f9d7337691351d88f96356a0deb2739805f4fd17b2d7491231afb",
         "signature": "99fd8590edb66840bd870c351920d72490722182f2ef937c77ce9ac1e38a58d8"
-      },
-      "./src/v1/home/index.ts": {
-        "version": "74c9a43c29f74f7bc78823536e4de53855a9b4a90a56bbf9495f62e6c427b035",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
       },
       "./node_modules/@types/cookiejar/index.d.ts": {
         "version": "16b7fb094ffaa5d270f934e7406e8baee2f8245cfabf6dcc20f693389f005f56",
@@ -1014,8 +1014,19 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "./src/v1/home/index.ts": [
+        "./src/framework/annotation-restapi/index.ts",
+        "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/node/fs.d.ts",
+        "./node_modules/@types/node/ts3.2/fs.d.ts",
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./src/index.ts": [
         "./src/framework/annotation-restapi/index.ts",
+        "./node_modules/@types/express/index.d.ts",
+        "./node_modules/@types/body-parser/index.d.ts",
+        "./src/v1/home/index.ts",
         "./node_modules/@types/node/fs.d.ts",
         "./node_modules/@types/node/ts3.2/fs.d.ts",
         "./node_modules/@types/node/util.d.ts",
@@ -1051,13 +1062,6 @@
         "./node_modules/@types/express/index.d.ts",
         "./src/framework/annotation-restapi/test-sub-endpoint.ts",
         "./src/framework/annotation-restapi/test-params-endpoint.ts",
-        "./node_modules/@types/node/fs.d.ts",
-        "./node_modules/@types/node/ts3.2/fs.d.ts",
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "./src/v1/home/index.ts": [
-        "./src/framework/annotation-restapi/index.ts",
         "./node_modules/@types/node/fs.d.ts",
         "./node_modules/@types/node/ts3.2/fs.d.ts",
         "./node_modules/@types/node/util.d.ts",
@@ -1737,6 +1741,9 @@
         "./node_modules/@types/node/ts3.2/fs.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./src/v1/home/index.ts": [
+        "./node_modules/@types/express/index.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -1825,15 +1832,15 @@
       "./node_modules/@types/connect/index.d.ts",
       "./node_modules/@types/body-parser/index.d.ts",
       "./node_modules/@types/express/index.d.ts",
+      "./src/framework/annotation-restapi/index.ts",
+      "./src/framework/annotation-restapi/test-sub-of-sub-endpoint.ts",
+      "./src/framework/annotation-restapi/test-sub-endpoint.ts",
+      "./src/framework/annotation-restapi/test-params-endpoint.ts",
+      "./src/framework/annotation-restapi/test-endpoint.ts",
       "./node_modules/@types/cookiejar/index.d.ts",
       "./node_modules/@types/superagent/index.d.ts",
       "./node_modules/@types/supertest/index.d.ts",
-      "./src/framework/annotation-restapi/index.ts",
       "./src/v1/home/index.ts",
-      "./src/framework/annotation-restapi/test-endpoint.ts",
-      "./src/framework/annotation-restapi/test-params-endpoint.ts",
-      "./src/framework/annotation-restapi/test-sub-endpoint.ts",
-      "./src/framework/annotation-restapi/test-sub-of-sub-endpoint.ts",
       "./src/index.ts"
     ]
   },
