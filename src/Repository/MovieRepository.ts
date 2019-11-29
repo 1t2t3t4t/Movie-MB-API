@@ -2,7 +2,7 @@ import IMovieList from '../model/MovieList';
 import Repository from './Repository';
 import Request from './Request'
 
-enum MovieListPath {
+enum MovieListType {
     UPCOMING = "upcoming",
     POPULAR = "popular",
     NOW_PLAYING = "now_playing"
@@ -12,21 +12,20 @@ export default class MovieRepository implements Repository {
 
     readonly BASE_PATH = "movie"
 
-    async getNowPlaying(): Promise<IMovieList> {
+    private async getMovieList(type: MovieListType): Promise<IMovieList> {
         const request = new Request()
         .addPath(this.BASE_PATH)
-        .addPath(MovieListPath.NOW_PLAYING)
+        .addPath(type)
         .setParams()
 
         return request.get()
     }
 
-    async getUpcoming(): Promise<IMovieList> {
-        const request = new Request()
-        .addPath(this.BASE_PATH)
-        .addPath(MovieListPath.UPCOMING)
-        .setParams()
+    async getNowPlaying(): Promise<IMovieList> {
+        return this.getMovieList(MovieListType.NOW_PLAYING)
+    }
 
-        return request.get()
+    async getUpcoming(): Promise<IMovieList> {
+        return this.getMovieList(MovieListType.UPCOMING)
     }
 }
