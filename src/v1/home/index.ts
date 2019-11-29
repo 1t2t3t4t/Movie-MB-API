@@ -1,6 +1,6 @@
 import { RouterController, GET } from "anno-express";
 import express from 'express';
-import TrendingRepository from "../../MovieDBRepository/TrendingRepository";
+import TrendingRepository from "../../Repository/TrendingRepository";
 
 @RouterController("/home")
 export default class HomeRouterController {
