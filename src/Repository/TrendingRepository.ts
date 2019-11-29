@@ -1,5 +1,6 @@
-import ITrending from '../model/Trending'
 import Request from './Request'
+import IMovieList from '../model/MovieList';
+import Repository from './Repository';
 
 export enum TrendingType {
     ALL = "all",
@@ -13,18 +14,18 @@ export enum TrendingTimeWindow {
     WEEK = "week"
 }
 
-export default class TrendingRepository {
+export default class TrendingRepository implements Repository {
 
-    private readonly BASE_PATH = "trending"
+    readonly BASE_PATH = "trending"
 
-    async getTrendingMovie(): Promise<ITrending> {
+    async getTrendingMovie(): Promise<IMovieList> {
         const request = new Request()
         .addPath(this.BASE_PATH)
         .addPath(TrendingType.MOVIE)
         .addPath(TrendingTimeWindow.WEEK)
         .setParams()
         
-        return request.get<ITrending>()
+        return request.get()
     }
 
 }
