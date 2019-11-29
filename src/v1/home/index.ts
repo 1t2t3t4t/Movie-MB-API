@@ -1,6 +1,6 @@
-import { RouterController, GET } from "../../framework/annotation-restapi";
+import { RouterController, GET } from "anno-express";
 import express from 'express';
-import TrendingRepository from "../../movieDBRepository/TrendingRepository";
+import TrendingRepository from "../../MovieDBRepository/TrendingRepository";
 
 @RouterController("/home")
 export default class HomeRouterController {
