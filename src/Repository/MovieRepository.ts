@@ -12,20 +12,20 @@ export default class MovieRepository implements Repository {
 
     readonly BASE_PATH = "movie"
 
-    private async getMovieList(type: MovieListType): Promise<IMovieList> {
+    private async getMovieList(type: MovieListType, page: number): Promise<IMovieList> {
         const request = new Request()
         .addPath(this.BASE_PATH)
         .addPath(type)
-        .setParams()
+        .setParams({ page })
 
         return request.get()
     }
 
-    async getNowPlaying(): Promise<IMovieList> {
-        return this.getMovieList(MovieListType.NOW_PLAYING)
+    async getNowPlaying(page: number): Promise<IMovieList> {
+        return this.getMovieList(MovieListType.NOW_PLAYING, page)
     }
 
-    async getUpcoming(): Promise<IMovieList> {
-        return this.getMovieList(MovieListType.UPCOMING)
+    async getUpcoming(page: number): Promise<IMovieList> {
+        return this.getMovieList(MovieListType.UPCOMING, page)
     }
 }

@@ -18,12 +18,12 @@ export default class TrendingRepository implements Repository {
 
     readonly BASE_PATH = "trending"
 
-    async getTrendingMovie(): Promise<IMovieList> {
+    async getTrendingMovie(page: number): Promise<IMovieList> {
         const request = new Request()
         .addPath(this.BASE_PATH)
         .addPath(TrendingType.MOVIE)
         .addPath(TrendingTimeWindow.WEEK)
-        .setParams()
+        .setParams({ page })
         
         return request.get()
     }

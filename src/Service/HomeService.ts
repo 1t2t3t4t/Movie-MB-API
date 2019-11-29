@@ -7,18 +7,18 @@ export default class HomeService {
     private trendingRepository = new TrendingRepository()
     private movieRepository = new MovieRepository()
 
-    async getTrendingMovie(): Promise<IMovieList> {
-        const movies = await this.trendingRepository.getTrendingMovie()
+    async getTrendingMovie(page: number): Promise<IMovieList> {
+        const movies = await this.trendingRepository.getTrendingMovie(page)
         return movies
     }
 
-    async getNowPlayingMovie(): Promise<IMovieList> {
-        const movies = await this.movieRepository.getNowPlaying()
+    async getNowPlayingMovie(page: number): Promise<IMovieList> {
+        const movies = await this.movieRepository.getNowPlaying(page)
         return movies
     }
 
-    async getUpcomingMovie(): Promise<IMovieList> {
-        const movies = await this.movieRepository.getUpcoming()
+    async getUpcomingMovie(page: number): Promise<IMovieList> {
+        const movies = await this.movieRepository.getUpcoming(page)
         return movies
     }
 
