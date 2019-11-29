@@ -20,4 +20,10 @@ export default class HomeRouterController {
         res.send(movies).end()
     }
 
+    @GET("/upcoming")
+    async getUpcoming(req: express.Request, res: express.Response, next: express.NextFunction) {
+        const movies = await this.homeService.getUpcomingMovie()
+        res.send(movies).end()
+    }
+
 }

@@ -17,4 +17,9 @@ export default class HomeService {
         return movies
     }
 
+    async getUpcomingMovie(): Promise<IMovieList> {
+        const movies = await this.movieRepository.getUpcoming()
+        return movies
+    }
+
 }

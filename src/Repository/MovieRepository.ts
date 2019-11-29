@@ -3,7 +3,7 @@ import Repository from './Repository';
 import Request from './Request'
 
 enum MovieListPath {
-    LATEST = "latest",
+    UPCOMING = "upcoming",
     POPULAR = "popular",
     NOW_PLAYING = "now_playing"
 }
@@ -16,6 +16,15 @@ export default class MovieRepository implements Repository {
         const request = new Request()
         .addPath(this.BASE_PATH)
         .addPath(MovieListPath.NOW_PLAYING)
+        .setParams()
+
+        return request.get()
+    }
+
+    async getUpcoming(): Promise<IMovieList> {
+        const request = new Request()
+        .addPath(this.BASE_PATH)
+        .addPath(MovieListPath.UPCOMING)
         .setParams()
 
         return request.get()
