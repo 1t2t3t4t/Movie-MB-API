@@ -11,7 +11,7 @@ export default class HomeService {
     async getTrendingMovie(page: number, limit: number): Promise<IMovieList> {
         const paginator = new Paginator()
 
-        return paginator.getList(page, limit, this.trendingRepository.getTrendingMovie)
+        return paginator.getList(page, limit, this.trendingRepository.getTrendingMovie.bind(this.trendingRepository))
     }
 
     private async getMovieList(type: MovieListType, page: number, limit: number): Promise<IMovieList> {
