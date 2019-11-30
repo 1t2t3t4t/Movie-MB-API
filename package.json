@@ -25,6 +25,7 @@
   "devDependencies": {
     "@types/supertest": "^2.0.8",
     "mocha": "^6.2.2",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "typescript-tslint-plugin": "^0.5.5"
   }
 }

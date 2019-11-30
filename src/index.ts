@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser';
 import HomeRouterController from './v1/home/index';
 import { Container } from "anno-express";
+import MovieRouterController from "./v1/movie";
 
 const PORT = process.env.PORT || 3000
 
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 })
 
 Container.register(app, HomeRouterController)
+Container.register(app, MovieRouterController)
 
 app.listen(PORT, () => {
     console.log("Server is up at port", PORT)

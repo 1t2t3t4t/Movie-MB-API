@@ -1,6 +1,5 @@
 import { RouterController, GET } from "anno-express";
 import express from 'express';
-import TrendingRepository from "../../Repository/TrendingRepository";
 import HomeService from '../../Service/HomeService';
 import PaginationRequest from '../../Service/PaginationRequest';
 

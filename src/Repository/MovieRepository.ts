@@ -1,6 +1,7 @@
 import IMovieList from '../model/MovieList';
 import Repository from './Repository';
 import Request from './Request'
+import IMovie from "../model/Movie";
 
 enum MovieListType {
     UPCOMING = "upcoming",
@@ -27,5 +28,14 @@ export default class MovieRepository implements Repository {
 
     async getUpcoming(page: number): Promise<IMovieList> {
         return this.getMovieList(MovieListType.UPCOMING, page)
+    }
+
+    async getMovieById(id: string): Promise<IMovie> {
+        const request = new Request()
+        .addPath(this.BASE_PATH)
+        .addPath(id)
+        .setParams()
+
+        return request.get()
     }
 }
