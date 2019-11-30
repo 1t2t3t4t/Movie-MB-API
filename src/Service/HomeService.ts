@@ -1,7 +1,7 @@
 import TrendingRepository from '../Repository/TrendingRepository';
 import IMovieList from '../model/MovieList';
 import MovieRepository, { MovieListType } from '../Repository/MovieRepository';
-import IMovie from "../model/Movie";
+import Paginator from './Paginator';
 
 export default class HomeService {
 
@@ -9,37 +9,16 @@ export default class HomeService {
     private movieRepository = new MovieRepository()
 
     async getTrendingMovie(page: number, limit: number): Promise<IMovieList> {
-        const movies = await this.trendingRepository.getTrendingMovie(page)
-        return movies
+        const paginator = new Paginator()
+
+        return paginator.getList(page, limit, this.trendingRepository.getTrendingMovie)
     }
 
     private async getMovieList(type: MovieListType, page: number, limit: number): Promise<IMovieList> {
-        let skip = (page - 1) * limit
-        let iterator = Math.floor(skip / 20) + 1
-        skip -= (iterator - 1) * 20
+        const getter = (iterator: number) => this.movieRepository.getMovieList(type, iterator)
+        const paginator = new Paginator()
 
-        let movies: IMovie[] = []
-        let total_pages: number = 0
-        let total_results: number = 0
-
-        while (movies.length < limit) {
-            const fetchMovies = await this.movieRepository.getMovieList(type, iterator)
-            total_results = fetchMovies.total_results
-            total_pages = Math.floor(total_results / limit)
-            for (let i=skip;i<fetchMovies.results.length;i++) {
-                if (movies.length >= limit) break 
-                movies.push(fetchMovies.results[i])
-                skip--;
-            }
-            iterator++
-        }
-
-        return {
-            page: page,
-            results: movies,
-            total_results,
-            total_pages
-        }
+        return paginator.getList(page, limit, getter)
     }
 
     async getNowPlayingMovie(page: number, limit: number): Promise<IMovieList> {
