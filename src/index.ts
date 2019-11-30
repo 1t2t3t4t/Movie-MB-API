@@ -17,6 +17,13 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use((req, res, next) => {
+	console.log('path', req.url, req.method)
+	console.log('body', req.body)
+	console.log('headers', req.headers.authorization)
+	next()
+})
+
 Container.register(app, HomeRouterController)
 Container.register(app, MovieRouterController)
 
