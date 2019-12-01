@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import HomeRouterController from './v1/home/index';
 import { Container } from "anno-express";
 import MovieRouterController from "./v1/movie";
+import DB from "./DB/DB";
 
 const PORT = process.env.PORT || 3000
 
