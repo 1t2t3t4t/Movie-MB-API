@@ -9,24 +9,28 @@ export enum MovieListType {
     NOW_PLAYING = "now_playing"
 }
 
+export enum MovieRegion {
+    THAILAND = "TH"
+}
+
 export default class MovieRepository implements Repository {
 
     readonly BASE_PATH = "movie"
 
-    async getMovieList(type: MovieListType, page: number): Promise<IMovieList> {
+    async getMovieList(type: MovieListType, page: number, language: string): Promise<IMovieList> {
         const request = new Request()
         .addPath(this.BASE_PATH)
         .addPath(type)
-        .setParams({ page })
+        .setParams({ page, region: MovieRegion.THAILAND, language })
 
         return request.get()
     }
 
-    async getMovieById(id: string): Promise<IMovie> {
+    async getMovieById(id: string, language: string): Promise<IMovie> {
         const request = new Request()
         .addPath(this.BASE_PATH)
         .addPath(id)
-        .setParams()
+        .setParams({ language })
 
         return request.get()
     }

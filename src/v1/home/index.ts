@@ -20,7 +20,8 @@ export default class HomeRouterController {
     async getNowPlaying(req: PaginationRequest, res: express.Response, next: express.NextFunction) {
         const page = Number(req.query.page) || 1
         const limit = Number(req.query.limit) || 20
-        const movies = await this.homeService.getNowPlayingMovie(page, limit)
+        const language = req.headers["accept-language"]
+        const movies = await this.homeService.getNowPlayingMovie(page, limit, language)
         res.send(movies).end()
     }
 
@@ -28,7 +29,8 @@ export default class HomeRouterController {
     async getUpcoming(req: PaginationRequest, res: express.Response, next: express.NextFunction) {
         const page = Number(req.query.page) || 1
         const limit = Number(req.query.limit) || 20
-        const movies = await this.homeService.getUpcomingMovie(page, limit)
+        const language = req.headers["accept-language"] 
+        const movies = await this.homeService.getUpcomingMovie(page, limit, language)
         res.send(movies).end()
     }
 

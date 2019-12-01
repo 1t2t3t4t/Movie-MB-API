@@ -21,7 +21,10 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
 	console.log('path', req.url, req.method)
 	console.log('body', req.body)
-	console.log('headers', req.headers.authorization)
+    console.log('auth headers', req.headers.authorization)
+    console.log('====HEADER====')
+    console.log(req.headers)
+    console.log('==============')
 	next()
 })
 

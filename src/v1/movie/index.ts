@@ -10,7 +10,8 @@ export default class MovieRouterController {
     @GET("/:id")
     async getMovieDetails(req: express.Request, res: express.Response, next: express.NextFunction) {
         const id = req.params.id
-        const movie = await this.movieDetailsService.getMovieDetails(id)
+        const language = req.headers["accept-language"]
+        const movie = await this.movieDetailsService.getMovieDetails(id, language)
         
         res.send(movie).end()
     }
