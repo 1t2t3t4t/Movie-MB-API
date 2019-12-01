@@ -1,6 +1,7 @@
 import { RouterController, GET } from "anno-express";
-import MovieDetailsService from "../../Service/MoveDetailsService";
+import MovieDetailsService from "../../Service/MovieDetailsService";
 import express from 'express'
+import { LanguageCode } from '../../model/LanguageCode';
 
 @RouterController("/movie")
 export default class MovieRouterController {
@@ -9,9 +10,12 @@ export default class MovieRouterController {
     
     @GET("/:id")
     async getMovieDetails(req: express.Request, res: express.Response, next: express.NextFunction) {
-        const id = req.params.id
-        const language = req.headers["accept-language"]
-        const movie = await this.movieDetailsService.getMovieDetails(id, language)
+        const id = req.params.id 
+        if (!id) {
+            res.send(500)
+            return 
+        }
+        const movie = await this.movieDetailsService.getMovieDetails(id, LanguageCode.THAI)
         
         res.send(movie).end()
     }

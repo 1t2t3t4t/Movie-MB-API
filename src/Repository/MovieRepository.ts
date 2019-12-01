@@ -2,6 +2,7 @@ import IMovieList from '../model/MovieList';
 import Repository from './Repository';
 import Request from './Request'
 import IMovie from "../model/Movie";
+import { LanguageCode } from "../model/LanguageCode";
 
 export enum MovieListType {
     UPCOMING = "upcoming",
@@ -26,7 +27,7 @@ export default class MovieRepository implements Repository {
         return request.get()
     }
 
-    async getMovieById(id: string, language: string): Promise<IMovie> {
+    async getMovieById(id: string, language: LanguageCode): Promise<IMovie> {
         const request = new Request()
         .addPath(this.BASE_PATH)
         .addPath(id)

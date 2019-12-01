@@ -17,7 +17,7 @@ export default class Paginator {
             const fetchItems = await getter(iterator)
             total_results = fetchItems.total_results
             total_pages = Math.floor(total_results / limit)
-            if (fetchItems.results == undefined) { break } 
+            if (fetchItems.results == undefined || fetchItems.results.length == 0) { break } 
             for (let i=skip;i<fetchItems.results.length;i++) {
                 if (items.length >= limit) break 
                 items.push(fetchItems.results[i])

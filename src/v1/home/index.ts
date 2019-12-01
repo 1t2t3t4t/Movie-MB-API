@@ -2,6 +2,7 @@ import { RouterController, GET } from "anno-express";
 import express from 'express';
 import HomeService from '../../Service/HomeService';
 import PaginationRequest from '../../Service/PaginationRequest';
+import { LanguageCode } from '../../model/LanguageCode';
 
 @RouterController("/home")
 export default class HomeRouterController {
@@ -20,8 +21,7 @@ export default class HomeRouterController {
     async getNowPlaying(req: PaginationRequest, res: express.Response, next: express.NextFunction) {
         const page = Number(req.query.page) || 1
         const limit = Number(req.query.limit) || 20
-        const language = req.headers["accept-language"]
-        const movies = await this.homeService.getNowPlayingMovie(page, limit, language)
+        const movies = await this.homeService.getNowPlayingMovie(page, limit, LanguageCode.THAI)
         res.send(movies).end()
     }
 
@@ -29,8 +29,7 @@ export default class HomeRouterController {
     async getUpcoming(req: PaginationRequest, res: express.Response, next: express.NextFunction) {
         const page = Number(req.query.page) || 1
         const limit = Number(req.query.limit) || 20
-        const language = req.headers["accept-language"] 
-        const movies = await this.homeService.getUpcomingMovie(page, limit, language)
+        const movies = await this.homeService.getUpcomingMovie(page, limit, LanguageCode.THAI)
         res.send(movies).end()
     }
 
