@@ -23,7 +23,7 @@ export default class TrendingRepository implements Repository {
         .addPath(this.BASE_PATH)
         .addPath(TrendingType.MOVIE)
         .addPath(TrendingTimeWindow.WEEK)
-        .setParams({ page, language: "th-TH" })
+        .setParams({ page })
         
         return request.get()
     }
