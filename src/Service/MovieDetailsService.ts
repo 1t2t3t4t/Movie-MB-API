@@ -7,7 +7,7 @@ export default class MovieDetailsService {
 
     movieRepository = new MovieRepository()
 
-    async getMovieDetails(id: string, language: LanguageCode): Promise<IMovie> {
+    async getMovieDetails(id: string, language: LanguageCode = LanguageCode.US): Promise<IMovie> {
         return this.movieRepository.getMovieById(id, language)
     }
 }

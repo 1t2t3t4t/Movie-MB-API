@@ -15,7 +15,7 @@ export default class MovieRouterController {
             res.send(500)
             return 
         }
-        const movie = await this.movieDetailsService.getMovieDetails(id, LanguageCode.THAI)
+        const movie = await this.movieDetailsService.getMovieDetails(id)
         
         res.send(movie).end()
     }
